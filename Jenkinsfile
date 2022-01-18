@@ -1,6 +1,5 @@
 pipeline {
     agent any
-    node ('ubuntu') {
         stages {
             stage ('Prep Phase') {
                 steps {
@@ -24,5 +23,4 @@ pipeline {
                 }
             }
         }        
-    }
 }
