@@ -7,20 +7,17 @@ pipeline {
     }
 
 
-
         stages {
             stage ('clean up') {
             steps {
                 cleanWs()
-                sh """
-                echo "Cleaned Up Workspace for ${APP_NAME}"
-                """
             }
         }
     
             stage ('Build Phase') {
                 steps {
                     echo 'Build Phase'
+                    sh 'mvn clean package'
                 }
             }
             stage ('Test Phase') {
