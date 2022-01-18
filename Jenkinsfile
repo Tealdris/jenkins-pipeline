@@ -33,7 +33,6 @@ pipeline {
                     sshagent(['tomcat']) {
                         sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@192.168.122.103://opt/tomcatwebapps/webapp.war'
                     }
-                     'Deploy Phase'
                 }
             }
         }        
