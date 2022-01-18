@@ -1,30 +1,28 @@
 pipeline {
-    agent {
-        node {
-          label 'ubuntu'
-      }
-  }
-    tools {
-        maven 'maven3'
-    }
-
-    stages {
-        stage ('clean up') {
-            steps {
-                cleanWs()
-                sh """
-                echo "Cleaned Up Workspace for ${APP_NAME}"
-                """
+    agent any
+    node ('ubuntu') {
+        stages {
+            stage ('Prep Phase') {
+                steps {
+                    echo 'whoami'
+                }
             }
-        }
-        stage('Code Checkout') {
-            steps {
-                sh """
-                echo "Cleaned Up Workspace for ${APP_NAME}"
-                """
+    
+            stage ('Build Phase') {
+                steps {
+                    echo 'Build Phase'
+                }
             }
-        }
-            
-
+            stage ('Test Phase') {
+                steps {
+                    echo 'Test Phase'
+                }
+            }
+            stage ('Deploy Phase') {
+                steps {
+                    echo 'Deploy Phase'
+                }
+            }
+        }        
     }
 }
