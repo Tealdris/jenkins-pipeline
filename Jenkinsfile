@@ -1,10 +1,6 @@
 pipeline {
 
-    agent {
-        node {
-          label 'ubuntu'
-      }
-    }
+    agent any
 
     tools { 
         maven "M3"
@@ -24,7 +20,6 @@ pipeline {
                 steps {
                     echo 'Build Phase'
                     sh '''
-                        ssh ubuntu@192.168.122.95
                         mvn clean package
                     '''
                 }
