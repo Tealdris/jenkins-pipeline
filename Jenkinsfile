@@ -1,10 +1,6 @@
 pipeline {
 
-    agent {
-        node {
-          label 'ubuntu'
-      }
-    }
+    agent any
 
     tools { 
         maven "M3"
