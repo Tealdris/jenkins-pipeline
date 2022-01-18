@@ -34,6 +34,10 @@ pipeline {
             stage ('Deploy-to-tomcat') {
                 steps {
                     sshagent(['tomcat']) {
+                        sh '''
+                            whoami
+                            ip a
+                        '''
                         sh 'scp -o StrictHostKeyChecking=no /usr/share/jenkins/*.war ubuntu@192.168.122.103:/opt/tomcat/webapps/webapp.war'
                     }
                 }
