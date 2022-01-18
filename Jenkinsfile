@@ -1,13 +1,12 @@
 pipeline {
+
     agent {
         node {
           label 'ubuntu'
       }
     }
 
-    tools {
-        maven 'maven3'
-    }
+
 
         stages {
             stage ('clean up') {
