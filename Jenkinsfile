@@ -33,6 +33,7 @@ pipeline {
                         sh '''
                             whoami
                             ip a
+                            ssh -v ubuntu@192.168.122.100
                         '''
                         sh 'ssh -v ubuntu@192.168.122.103'
                     }
