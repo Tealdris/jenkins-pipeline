@@ -24,11 +24,6 @@ pipeline {
                     sh 'mvn clean package'
                 }
             }
-            stage ('Test Phase') {
-                M3steps {
-                    echo 'Test Phase'
-                }
-            }
             stage ('Deploy Phase') {
                 steps {
                     echo 'Deploy Phase'
