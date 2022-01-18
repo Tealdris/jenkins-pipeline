@@ -1,0 +1,112 @@
+
+Skip to content
+Pull requests
+Issues
+Marketplace
+Explore
+@Tealdris
+cehkunal /
+webapp
+Public
+forked from devopssecure/webapp
+
+Code
+Pull requests 8
+Actions
+Projects
+Wiki
+Security
+
+    Insights
+
+webapp/Jenkinsfile.old
+@andynosy
+andynosy Rename Jenkinsfile to Jenkinsfile.old
+Latest commit 9b4f8f6 on Jul 1, 2020
+History
+1 contributor
+68 lines (59 sloc) 1.66 KB
+pipeline {
+  agent any 
+  tools {
+    maven 'Maven'
+  }
+  stages {
+    stage ('Initialize') {
+      steps {
+        sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+            ''' 
+      }
+    }
+    
+    stage ('Check-Git-Secrets') {
+      steps {
+        sh 'rm trufflehog || true'
+        sh 'docker run gesellix/trufflehog --json https://github.com/cehkunal/webapp.git > trufflehog'
+        sh 'cat trufflehog'
+      }
+    }
+    
+    stage ('Source Composition Analysis') {
+      steps {
+         sh 'rm owasp* || true'
+         sh 'wget "https://raw.githubusercontent.com/cehkunal/webapp/master/owasp-dependency-check.sh" '
+         sh 'chmod +x owasp-dependency-check.sh'
+         sh 'bash owasp-dependency-check.sh'
+         sh 'cat /var/lib/jenkins/OWASP-Dependency-Check/reports/dependency-check-report.xml'
+        
+      }
+    }
+    
+    stage ('SAST') {
+      steps {
+        withSonarQubeEnv('sonar') {
+          sh 'mvn sonar:sonar'
+          sh 'cat target/sonar/report-task.txt'
+        }
+      }
+    }
+    
+    stage ('Build') {
+      steps {
+      sh 'mvn clean package'
+       }
+    }
+    
+    stage ('Deploy-To-Tomcat') {
+            steps {
+           sshagent(['tomcat']) {
+                sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@13.232.202.25:/prod/apache-tomcat-8.5.39/webapps/webapp.war'
+              }      
+           }       
+    }
+    
+    
+    stage ('DAST') {
+      steps {
+        sshagent(['zap']) {
+         sh 'ssh -o  StrictHostKeyChecking=no ubuntu@13.232.158.44 "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://13.232.202.25:8080/webapp/" || true'
+        }
+      }
+    }
+    
+  }
+}
+
+    © 2022 GitHub, Inc.
+
+    Terms
+    Privacy
+    Security
+    Status
+    Docs
+    Contact GitHub
+    Pricing
+    API
+    Training
+    Blog
+    About
+
+Loading complete
