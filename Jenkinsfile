@@ -34,7 +34,7 @@ pipeline {
                             whoami
                             ip a
                         '''
-                        sh 'scp -o StrictHostKeyChecking=no /usr/share/jenkins/*.war ubuntu@192.168.122.103:/opt/tomcat/webapps/webapp.war'
+                        sh 'scp -v -o StrictHostKeyChecking=no /usr/share/jenkins/*.war ubuntu@192.168.122.103:/opt/tomcat/webapps/webapp.war'
                     }
                 }
             }
