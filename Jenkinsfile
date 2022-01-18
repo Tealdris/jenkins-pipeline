@@ -7,13 +7,14 @@ pipeline {
     }
 
     tools { 
-        maven 'maven3' 
+        maven 'M3' 
     }
 
         stages {
             stage ('clean up') {
             steps {
                 cleanWs()
+
             }
         }
     
