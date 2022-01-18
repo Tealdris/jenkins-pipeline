@@ -18,7 +18,7 @@ pipeline {
                             echo "M2_HOME = ${M2_HOME}"
                             ip a
                             whoami
-                            
+
                     ''' 
             }
         }
@@ -34,7 +34,7 @@ pipeline {
             stage ('Deploy-to-tomcat') {
                 steps {
                     sshagent(['tomcat']) {
-                        sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@192.168.122.103://opt/tomcatwebapps/webapp.war'
+                        sh 'scp -o StrictHostKeyChecking=no /usr/share/jenkins/*.war ubuntu@192.168.122.103:/opt/tomcat/webapps/webapp.war'
                     }
                 }
             }
