@@ -7,7 +7,7 @@ pipeline {
     }
 
     tools { 
-        maven 'mvn' 
+        maven 'Maven 3.6.3' 
     }
 
         stages {
@@ -25,7 +25,7 @@ pipeline {
                 }
             }
             stage ('Test Phase') {
-                steps {
+                M3steps {
                     echo 'Test Phase'
                 }
             }
