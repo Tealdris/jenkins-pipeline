@@ -10,15 +10,17 @@ pipeline {
         maven "M3"
     }
 
-        stages {
-            stage ('clean up') {
+    stages {
+        stage ('Initialize') {
             steps {
-                cleanWs()
-
+                sh '''
+                            echo "PATH = ${PATH}"
+                            echo "M2_HOME = ${M2_HOME}"
+                    ''' 
             }
         }
     
-            stage ('something Phase') {
+            stage ('Build Phase') {
                 steps {
                     echo 'Build Phase'
                     checkout scm
