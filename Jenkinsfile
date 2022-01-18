@@ -8,8 +8,6 @@ pipeline {
 
     tools { 
         maven "M3"
-
-
     }
 
         stages {
@@ -23,6 +21,7 @@ pipeline {
             stage ('Build Phase') {
                 steps {
                     echo 'Build Phase'
+                    checkout scm
                     sh 'mvn clean package'
                 }
             }
