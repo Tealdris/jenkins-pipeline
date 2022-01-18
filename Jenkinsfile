@@ -1,7 +1,7 @@
 pipeline {
     agent {
         node {
-          label 'Node1'
+          label 'ubuntu,ubuntu18,ubuntu_ansible'
       }
     }
         stages {
