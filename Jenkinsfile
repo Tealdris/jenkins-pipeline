@@ -23,7 +23,10 @@ pipeline {
             stage ('Build Phase') {
                 steps {
                     echo 'Build Phase'
-                    sh 'mvn clean package'
+                    sh '''
+                        ssh ubuntu@192.168.122.95
+                        mvn clean package
+                    '''
                 }
             }
 
