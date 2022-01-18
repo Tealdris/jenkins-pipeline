@@ -1,19 +1,8 @@
 pipeline {
-  agent any 
+  agent {
+      node {
+          label 'ubuntu'
+      }
+  }
 
-
-    stages {
-        stage ("initialize") {
-            steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                ''' 
-            }
-
-        }
-        stage ("Build") {
-
-        }
-    }
 }
