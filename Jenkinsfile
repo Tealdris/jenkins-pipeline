@@ -29,9 +29,6 @@ pipeline {
         stage ('Sourse-composition-analysis') {
             steps {
                 sh '''
-                    rm owasp* || true 
-                    sleep 5
-                    wget 'https://raw.githubusercontent.com/Tealdris/jenkins-pipeline/main/owasp-dependency-check.sh'
                     chmod +x owasp-dependency-check.sh
                     bash owasp-dependency-check.sh
                     cat /home/ubuntu//OWASP-Dependency-Check/reports/dependency-check-report.xml
