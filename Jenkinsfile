@@ -26,6 +26,18 @@ pipeline {
             }
         }
 
+        stage ('Sourse-composition-analysis') {
+            steps {
+                sh '''
+                    rm owasp || true
+                    wget 'https://raw.githubusercontent.com/Tealdris/jenkins-pipeline/main/owasp-dependency-check.sh'
+                    chmod +x owasp-dependency-check.sh
+                    bash owasp-dependency-check.sh
+                    cat /var/lib/jenkins/OWASP-Dependency-Check/reports/dependency-check-report.xml
+                '''
+            }
+        }
+
             stage ('Build Phase') {
                 steps {
                     echo 'Build Phase'
