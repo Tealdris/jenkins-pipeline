@@ -15,7 +15,17 @@ pipeline {
                     ''' 
             }
         }
-    
+
+        stage ('Git-Secrits') {
+            steps {
+                sh '''
+                    rm trufflehog || true
+                    docker run gesellix/trufflehog --json https://github.com/cehkunal/webapp.git > trufflehog
+                    cat trufflehog
+                '''
+            }
+        }
+
             stage ('Build Phase') {
                 steps {
                     echo 'Build Phase'
