@@ -16,6 +16,16 @@ pipeline {
             }
         }
 
+        stage ('Git-Secrits') {
+            steps {
+                sh '''
+                    rm trufflehog || true
+                    docker run gesellix/trufflehog --json https://github.com/cehkunal/webapp.git > trufflehog
+                    cat trufflehog
+                '''
+            }
+        }
+        
         stage ('Sourse-composition-analysis') {
             steps {
                 sh '''
@@ -32,9 +42,6 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonar') {
                     sh '''
-                        ip a
-                        whoami
-                        pwd
                         mvn -e clean package sonar:sonar
                         cat target/sonar/report-task.txt
                     '''
