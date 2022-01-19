@@ -29,12 +29,8 @@ pipeline {
         stage ('Sourse-composition-analysis') {
             steps {
                 sh '''
-                    ip a
-                    pwd
-                    whoami
-                    ping -c 5 8.8.8.8
-                    ping -c 5 raw.githubusercontent.com
                     rm owasp* || true 
+                    sleep 5
                     wget 'https://raw.githubusercontent.com/Tealdris/jenkins-pipeline/main/owasp-dependency-check.sh'
                     chmod +x owasp-dependency-check.sh
                     bash owasp-dependency-check.sh
