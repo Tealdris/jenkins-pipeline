@@ -32,7 +32,10 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonar') {
                     sh '''
-                        mvn clean package sonar:sonar
+                        ip a
+                        whoami
+                        pwd
+                        mvn -e clean package sonar:sonar
                         cat target/sonar/report-task.txt
                     '''
                 }
