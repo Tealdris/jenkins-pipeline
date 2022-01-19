@@ -28,13 +28,11 @@ pipeline {
 
         stage ('Sourse-composition-analysis') {
             steps {
-                sh '''
-                    rm owasp || true
-                    wget 'https://raw.githubusercontent.com/Tealdris/jenkins-pipeline/main/owasp-dependency-check.sh'
-                    chmod +x owasp-dependency-check.sh
-                    bash owasp-dependency-check.sh
-                    cat /var/lib/jenkins/OWASP-Dependency-Check/reports/dependency-check-report.xml
-                '''
+                sh 'rm owasp* || true'
+                sh 'wget "https://raw.githubusercontent.com/cehkunal/webapp/master/owasp-dependency-check.sh" '
+                sh 'chmod +x owasp-dependency-check.sh'
+                sh 'bash owasp-dependency-check.sh'
+                sh 'cat /var/lib/jenkins/OWASP-Dependency-Check/reports/dependency-check-report.xml'
             }
         }
 
