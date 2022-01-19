@@ -16,15 +16,6 @@ pipeline {
             }
         }
 
-        stage ('Git-Secrits') {
-            steps {
-                sh '''
-                    rm trufflehog || true
-                    docker run gesellix/trufflehog --json https://github.com/cehkunal/webapp.git > trufflehog
-                    cat trufflehog
-                '''
-            }
-        }
 
         stage ('Sourse-composition-analysis') {
             steps {
@@ -49,7 +40,6 @@ pipeline {
             }
         }
 
-
             stage ('Build Phase') {
                 steps {
                     echo 'Build Phase'
@@ -66,5 +56,14 @@ pipeline {
                     }
                 }
             }
+
+            stage ('DAST') {
+                steps {
+                    sshagent(['zap']) {
+                                 sh 'ssh -o  StrictHostKeyChecking=no ubuntu@192.168.122.93 "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://192.168.122.103:8080/webapp/" || true'
+                    }
+                }            
+        }
+
         }        
 }
