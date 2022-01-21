@@ -20,7 +20,7 @@ pipeline {
             steps {
                 sh '''
                     rm trufflehog || true
-                    docker run gesellix/trufflehog --json https://github.com/Tealdris/jenkins-pipeline/webapp.git > trufflehog
+                    docker run gesellix/trufflehog --json https://github.com/Tealdris/jenkins-pipeline/ > trufflehog
                     cat trufflehog
                 '''
             }
