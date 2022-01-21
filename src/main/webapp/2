@@ -1,2 +1,8 @@
     dev_ssh_username1: "admin"
     dev_ssh_password1: "admin123"
+
+- name: Deploy
+  hosts: all
+  tasks:
+    - name: Update
+      shell: "update.sh --user={{ update_user }} --password={{ update_password }}"
