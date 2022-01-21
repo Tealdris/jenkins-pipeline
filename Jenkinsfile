@@ -20,7 +20,7 @@ pipeline {
             steps {
                 sh '''
                     rm trufflehog || true
-                    docker run gesellix/trufflehog --json https://github.com/Mi-Al/WiFi-autopwner.git > trufflehog
+                    docker run gesellix/trufflehog --json https://github.com/Tealdris/jenkins-pipeline.git > trufflehog
                     cat trufflehog
                 '''
             }
