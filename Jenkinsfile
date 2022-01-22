@@ -36,7 +36,7 @@ pipeline {
                 sh '''
                     chmod +x owasp-dependency-check.sh
                     bash owasp-dependency-check.sh
-                    cat /home/ubuntu//OWASP-Dependency-Check/reports/dependency-check-report.xml
+                    cat /home/ubuntu/OWASP-Dependency-Check/reports/dependency-check-report.xml
                 '''
             }
         }
