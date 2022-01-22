@@ -1,6 +1,11 @@
 pipeline {
 
-    agent any
+
+    agent {
+        node {
+            label 'Node1'
+        }   
+    }
 
     tools { 
         maven "M3"
