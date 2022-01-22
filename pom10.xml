@@ -1,43 +1,20 @@
-
-Skip to content
-Pull requests
-Issues
-Marketplace
-Explore
-@Tealdris
-leaferrara /
-vulnerable-dependency-example
-Public
-
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-
-    Insights
-
-vulnerable-dependency-example/pom.xml
-@schnatterer
-schnatterer pom.xml: Updated dependency-check-maven version
-Latest commit ddabfd9 on May 2, 2017
-History
-1 contributor
-105 lines (93 sloc) 4.28 KB
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
+
     The MIT License (MIT)
+
     Copyright (c) 2016 TRIOLOGY GmbH
+
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
     in the Software without restriction, including without limitation the rights
     to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
     copies of the Software, and to permit persons to whom the Software is
     furnished to do so, subject to the following conditions:
+
     The above copyright notice and this permission notice shall be included in all
     copies or substantial portions of the Software.
+
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -45,6 +22,7 @@ History
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
+
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -125,19 +103,3 @@ History
         </plugins>
     </build>
 </project>
-
-    © 2022 GitHub, Inc.
-
-    Terms
-    Privacy
-    Security
-    Status
-    Docs
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
-
-Loading complete
