@@ -5,4 +5,4 @@
   hosts: all
   tasks:
     - name: Update
-      shell: "update.sh --user={{ update_user }} --password={{ update_password }}"
+      shell: "update.sh --user={{ username123 }} --password={{ 1p293sdfgsdfg3378vdeuhb3 }}"
